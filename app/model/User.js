@@ -48,7 +48,7 @@ const userSchema = new Schema({
     ]
 })
 
-userSchema.pre('validate', (next) => {
+userSchema.pre('validate', function (next) {
     const user = this
     if (user.isNew) {
         bcryptjs.genSalt(10)
@@ -65,7 +65,7 @@ userSchema.pre('validate', (next) => {
     }
 })
 
-userSchema.methods.generateToken = () => {
+userSchema.methods.generateToken  = function() {
     const user = this
     const tokenData = {
         _id: user._id,
@@ -85,8 +85,9 @@ userSchema.methods.generateToken = () => {
         })
 }
 
-userSchema.statics.findByCredentials = (email, password) => {
+userSchema.statics.findByCredentials = function(email, password) {
     const User = this
+    // console.log(this)
     return User.findOne({ email })
         .then((user) => {
             if (!user) {
@@ -106,7 +107,7 @@ userSchema.statics.findByCredentials = (email, password) => {
         })
 }
 
-userSchema.statics.findByCredentialsAndCompare = (id, oldPassword, newPassword) => {
+userSchema.statics.findByCredentialsAndCompare = function(id, oldPassword, newPassword) {
     const User = this
 
     return User.findById(id)
@@ -141,7 +142,7 @@ userSchema.statics.findByCredentialsAndCompare = (id, oldPassword, newPassword) 
         })
 }
 
-userSchema.statics.findByToken = (token) => {
+userSchema.statics.findByToken = function(token) {
     console.log(token)
     const User = this
     let tokenData

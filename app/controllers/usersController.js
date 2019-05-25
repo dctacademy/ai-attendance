@@ -78,5 +78,5 @@ router.delete('/logout', authenticateUser, (req, res) => {
 })
 
 module.exports = {
-    usersRouter: router
+    usersController: router
 }

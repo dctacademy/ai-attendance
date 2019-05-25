@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
-// const { authController } = require('../app/controllers/auth-controller');
+const { usersController } = require('../app/controllers/usersController');
 
-// router.use('/auth', authController);
+router.use('/users', usersController);
 
 module.exports = {
     routes: router
