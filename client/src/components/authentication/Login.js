@@ -15,6 +15,7 @@ class Login extends React.Component {
             type: "password"
         }
     }
+    
     handleChecked = (e) => {
         e.target.checked ? this.setState(() => ({ type: "text" })) : this.setState(() => ({ type: "password" }))
     }

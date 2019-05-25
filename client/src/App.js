@@ -8,6 +8,7 @@ import 'bootstrap-css-only/css/bootstrap.min.css';
 import 'mdbreact/dist/css/mdb.css';
 import { MDBIcon } from "mdbreact"
 import Register from "./components/authentication/Register"
+import Ai from "./components/classifier/ai"
 import Login from "./components/authentication/Login"
 import Account from "./components/authentication/account"
 class App extends Component {
@@ -43,7 +44,7 @@ class App extends Component {
               {this.state.isAuthenticated &&
                 <Nav navbar className="mr-auto">
                   <NavItem>
-                    <Link to="/topic" className="nav-link active" > Attendance </Link>
+                    <Link to="/attendance" className="nav-link active" > Attendance </Link>
                   </NavItem>
                 </Nav>
               }
@@ -70,7 +71,7 @@ class App extends Component {
             </Collapse>
           </Navbar>
           <Switch>
-            {/* <Route path="/" component={StoryList} exact={true} /> */}
+            <Route path="/" component={Ai} exact={true} />
             <Route path="/users/register" component={Register} exact={true} />
             <Route path="/users/login" render={() => <Login handleIsAuthenticated={this.handleIsAuthenticated} />} exact={true} />
             <Route path="/users/logout" component={(props) => {
